@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: cmdApp_production
+  database: df1q7err49161v
+  username: wfbhteoursrcop
+  password: KTY1LR9vfNMGPNbj3R3ZZDJt5n
