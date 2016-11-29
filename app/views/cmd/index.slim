@@ -1,0 +1,29 @@
+center.message
+  | Please press a short cut command
+coffee:
+  $(document).ready ->
+    $(document).keydown (e) ->
+      if (e.ctrlKey) 
+        $.ajax({
+          url: 'get_cmd'
+          method: 'GET'
+          data: 
+            cmd: "Control " + String.fromCharCode(e.keyCode)
+          success: (res) ->
+            if res.cmd? 
+              $('.message').text(res.cmd.cmd_shortcut + ":   " + res.cmd.text)
+            else 
+              $('.message').text("Not a shortcut command")
+        })
+      else if (e.shiftKey)
+        $.ajax({
+          url: 'get_cmd'
+          method: 'GET'
+          data: 
+            cmd: "Shift " + String.fromCharCode(e.keyCode)
+          success: (res) ->
+            if res.cmd? 
+              $('.message').text(res.cmd.cmd_shortcut + ":   " + res.cmd.text)
+            else 
+              $('.message').text("Not a shortcut command")
+        })
